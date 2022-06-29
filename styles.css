@@ -71,23 +71,20 @@ main {
   font-size: 21px;
   border: 1px dashed #ec362d;
   border-radius: 50px;
+  cursor: pointer;
 }
 
 .todos-quizzes {
   display: flex;
   flex-direction: column;
   row-gap: 12px;
+  word-break: break-all;
 }
 
 .todos-quizzes > p {
   color: #000000;
   font-size: 20px;
   font-weight: 700;
-}
-
-.quizzes > li {
-  width: 340px;
-  height: 181px;
 }
 
 .quizzes {
@@ -100,22 +97,34 @@ main {
   position: relative;
   display: flex;
   justify-content: center;
-  background: linear-gradient(
-      180deg,
-      rgba(255, 255, 255, 0) 0%,
-      rgba(0, 0, 0, 0.5) 64.58%,
-      #000000 100%
-    ),
-    url(#); /* A imagem de cada card vai aqui */
   width: 340px;
   height: 181px;
-  object-fit: cover;
   border-radius: 5px;
 }
 
-.quizzes > li > div {
+.quizzes > li > img {
+  width: 340px;
+  height: 181px;
+}
+
+.quizzes > li > .gradiente {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 340px;
+  height: 181px;
+  background-image: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0) 0%,
+    rgba(0, 0, 0, 0.5) 64.58%,
+    #000000 100%
+  );
+}
+
+.gradiente > div {
   position: absolute;
   bottom: 7px;
+  left: 20px;
   width: 301px;
   height: 54px;
   display: flex;
