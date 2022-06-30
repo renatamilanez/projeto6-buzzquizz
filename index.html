@@ -13,7 +13,7 @@
       <h6>BuzzQuizz</h6>
     </header>
     <main>
-      <div class="primeira-tela">
+      <div class="tela-inicial escondido">
         <div class="criar-quizz">
           <div class="texto-botao">
             <p>Você não criou nenhum quizz ainda :(</p>
@@ -25,8 +25,25 @@
           <ul class="quizzes"></ul>
         </div>
       </div>
+
+      <div class="tela-quizz">
+        <div class="tela-info-quizz">
+          <div class="startAddQuizz">
+            <h6>Comece pelo começo</h6>
+            <div class="infoQuizz">
+              <input class="titulo-novo-quizz" type="text" placeholder="Título do seu quizz" required minlength="20" maxlength="60">
+              <input class="url-novo-quizz" type="url" required placeholder="URL da imagem do seu quizz">
+              <input class="pergunta-novo-quizz" required type="number" placeholder="Quantidade de perguntas do seu quizz">
+              <input class="niveis-novo-quizz" type="number" required placeholder="Quantidade de níveis do seu quizz">
+            </div>
+            <button onclick="validarInfoQuiz()">Prosseguir para criar perguntas</button>
+          </div>
+        </div>
+      </div>
+      
     </main>
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <script src="script.js"></script>
+    <script src="script2.js"></script>
   </body>
 </html>
