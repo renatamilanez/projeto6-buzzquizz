@@ -13,11 +13,11 @@
       <h2>BuzzQuizz</h2>
     </header>
     <main>
-      <div class="tela-inicial escondido">
+      <div class="tela-inicial">
         <div class="criar-quizz">
           <div class="texto-botao">
             <p>Você não criou nenhum quizz ainda :(</p>
-            <button>Criar Quizz</button>
+            <button onclick="renderizarInfoQuizz()">Criar Quizz</button>
           </div>
         </div>
         <div class="todos-quizzes">
@@ -27,83 +27,7 @@
       </div>
 
       <div class="tela-quizz">
-        <div class="tela-info-quizz escondido">
-          <div class="template-novo-quizz">
-            <h5>Comece pelo começo</h5>
-            <div class="container-quizz">
-              <input class="titulo-novo-quizz" type="text" placeholder="Título do seu quizz" required minlength="20" maxlength="60">
-              <input class="url-novo-quizz" type="url" required placeholder="URL da imagem do seu quizz">
-              <input class="pergunta-novo-quizz" required type="number" placeholder="Quantidade de perguntas do seu quizz">
-              <input class="niveis-novo-quizz" type="number" required placeholder="Quantidade de níveis do seu quizz">
-            </div>
-            <button onclick="validarInfoQuiz()">Prosseguir para criar perguntas</button>
-          </div>
-        </div>
-
-        <div class="tela-perguntas-quizz escondido">
-          <div class="template-novo-quizz"> 
-            <h5>Crie suas perguntas</h5>
-            <div class="container-quizz">
-              <div class="resposta correta">
-                <h6>Pergunta 1</h6>
-                <input class="texto-pergunta" type="text" placeholder="Texto da pergunta" required minlength="20">
-                <input class="cor-pergunta" type="color" required placeholder="Cor de fundo da pergunta" value="#f6b73c">
-                <h6>Resposta correta</h6>
-                <input class="resposta-pergunta" required type="text" placeholder="Resposta correta">
-                <input class="url-pergunta" type="url" required placeholder="URL da imagem">
-              </div>
-              <h6>Resposta incorretas</h6>
-              <div class="resposta incorreta">
-                <input class="resposta-pergunta" required type="text" placeholder="Resposta incorreta 1">
-                <input class="url-pergunta" type="url" required placeholder="URL da imagem">
-              </div>
-          </div>
-
-          <div class="expansivo">
-            <h6>Pergunta 2</h6>
-            <ion-icon name="create-outline" onclick="expandir()"></ion-icon>
-          </div>
-
-          <button onclick="validarPerguntasQuizz()">Prosseguir para criar níveis</button>
-        </div>
-        </div>
-
-        <div class="tela-niveis-quizz escondido">
-          <div class="template-novo-quizz"> 
-            <h5>Agora, decida os níveis!</h5>
-            <div class="container-quizz">
-              <div class="nivel-quizz">
-                <h6>Nível 1</h6>
-                <input class="titulo-nivel" type="text" placeholder="Título do nível" required minlength="10">
-                <input class="porcentagem-nivel" type="number" required min="0" max="100" placeholder="% de acerto mínima">
-                <input class="url-nivel" type="url" required placeholder="URL da imagem do nível">
-                <input class="descricao-nivel" required type="text" placeholder="Descrição do nível" minlength="30">
-              </div>
-            </div>
-
-            <div class="expansivo">
-              <h6>Nível 2</h6>
-              <ion-icon name="create-outline" onclick="expandir()"></ion-icon>
-            </div>
-          
-            <button onclick="validarNiveisQuizz()">Prosseguir para criar níveis</button>
-          </div>
-        </div>
-
-        <div class="tela-sucesso-quizz escondido"> 
-          <div class="template-novo-quizz">
-            <h5>Seu quizz está pronto!</h5>
-
-            <img src="">
-          
-            <button onclick="renderizarQuizz()">Acessar Quizz</button>
-            <a onclick="renderizarHome()">Voltar para home</a>
-          </div>
-        </div>
-
       </div>
-
-
       
     </main>
 
