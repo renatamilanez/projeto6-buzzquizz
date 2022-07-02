@@ -13,7 +13,7 @@ header {
   position: sticky;
   top: 0;
   left: 0;
-  z-index: 1;
+  z-index: 3;
   background-color: #ec362d;
   width: 100%;
   height: 69px;
@@ -39,6 +39,8 @@ main {
   display: flex;
   flex-direction: column;
   row-gap: 77px;
+  justify-content: center;
+  align-items: center;
 }
 
 .criar-quizz {
@@ -49,6 +51,55 @@ main {
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+.seus-quizzes {
+  width: 1050px;
+}
+
+.seus-quizzes-titulo {
+  display: flex;
+  align-items: center;
+  column-gap: 10px;
+}
+
+.seus-quizzes-titulo > p {
+  font-size: 20px;
+  font-weight: 700;
+}
+
+.seus-quizzes-titulo > ion-icon {
+  font-size: 30px;
+  color: #ec362d;
+  cursor: pointer;
+}
+
+.seus-quizzes-lista {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+  width: 1050px;
+}
+
+.imagelista {
+  position: relative;
+  width: 340px;
+  height: 181px;
+  background-image: url("https://images7.memedroid.com/images/UPLOADED608/5d769bb5a0339.jpeg");
+  background-size: 340px 181px;
+  border-radius: 5px;
+  word-break: break-all;
+  cursor: pointer;
+}
+
+.imagelista p {
+  bottom: 0;
+  margin-left: 20px;
+  margin-bottom: 20px;
+  position: absolute;
+  width: 300px;
+  font-size: 19px;
+  color: #ffffff;
 }
 
 .texto-botao {
@@ -80,6 +131,7 @@ main {
   flex-direction: column;
   row-gap: 12px;
   word-break: break-all;
+  width: 1050px;
 }
 
 .todos-quizzes > p {
@@ -92,6 +144,7 @@ main {
   display: flex;
   flex-wrap: wrap;
   gap: 15px;
+  margin-bottom: 30px;
 }
 
 .quizzes > li {
@@ -101,6 +154,7 @@ main {
   width: 340px;
   height: 181px;
   border-radius: 5px;
+  cursor: pointer;
 }
 
 .quizzes > li > img {
@@ -135,6 +189,184 @@ main {
 .quizzes p {
   color: #ffffff;
   font-size: 19px;
+  height: 20px;
+}
+
+.banner {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  top: 69px;
+  left: 0;
+  width: 100%;
+  height: 227px;
+}
+
+.banner > p {
+  position: absolute;
+  z-index: 1;
+  font-size: 39px;
+  color: #ffffff;
+}
+
+.bannerImage {
+  position: absolute;
+  width: 100%;
+  height: 227px;
+  object-fit: cover;
+}
+
+.quizzesPraJogar {
+  width: 759px;
+  margin: 269px auto;
+  display: flex;
+  flex-direction: column;
+  row-gap: 42px;
+}
+
+.quizzesPraJogar > li._quizz {
+  width: 100%;
+  height: 676px;
+  /* background-color: #f5ceff; */
+  background-color: #ffffff;
+}
+
+._quizz {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  row-gap: 20px;
+}
+
+._quizz > div {
+  background-color: #434ca0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 688px;
+  height: 138px;
+  text-align: center;
+}
+
+._quizzTitulo {
+  color: #ffffff;
+  font-size: 23px;
+  word-break: break-all;
+}
+
+._quizzAlternativas {
+  /* background-color: red; */
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 24px;
+  width: 688px;
+  height: 450px;
+}
+
+._quizzAlternativas > li {
+  /* background-color: white; */
+  width: 329px;
+  height: 216px;
+}
+
+._quizzAlternativas > li > img {
+  width: 329px;
+  height: 175px;
+  object-fit: cover;
+}
+
+._quizzAlternativas > li > p {
+  height: 34px;
+  display: flex;
+  align-items: center;
+  font-size: 20px;
+  font-weight: 700;
+}
+
+._resultado {
+  background-color: #ffffff;
+  width: 759px;
+  height: 410px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  row-gap: 18px;
+}
+._pontuacao {
+  background-color: #ec362d;
+  width: 727px;
+  height: 99px;
+  margin-top: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+._pontuacao > p {
+  color: #ffffff;
+  font-size: 23px;
+  font-weight: 700;
+}
+
+._pontuacao2 {
+  height: 364px;
+  width: 727px;
+  display: flex;
+  column-gap: 21px;
+}
+
+._pontuacao2 > img {
+  width: 364px;
+  height: 273px;
+  object-fit: cover;
+}
+
+._pontuacao2 > p {
+  width: 328px;
+  color: #484848;
+  height: 273px;
+  font-size: 19px;
+  font-weight: 700;
+  line-height: 25px;
+}
+
+._reiniciarQuizz {
+  position: absolute;
+  width: 260px;
+  height: 112px;
+  margin-top: 660px;
+  display: flex;
+  flex-direction: column;
+  row-gap: 10px;
+}
+
+._reiniciar,
+._home {
+  cursor: pointer;
+  font-size: 21px;
+  font-weight: 400;
+}
+
+._reiniciar {
+  background-color: #ec362d;
+  color: #ffffff;
+  border: 0;
+  width: 260px;
+  height: 52px;
+  border-radius: 15px;
+}
+
+._home {
+  background-color: #fafafa;
+  color: #818181;
+  border: 0;
+  width: 260px;
+  height: 44px;
 }
 
 .tela-quizz {
@@ -195,6 +427,7 @@ main {
   border: 1px solid #ec362d;
   border-radius: 15px;
   margin-top: 29px;
+  cursor: pointer;
 }
 
 .escondido {
@@ -203,19 +436,106 @@ main {
 
 @media (max-width: 1100px) {
   main {
-    width: 340px;
-    margin-top: 31px;
+    width: 375px;
+    margin: 31px auto 0 auto;
   }
   .tela-inicial {
     row-gap: 35px;
   }
+  .criar-quizz {
+    width: 340px;
+  }
   .todos-quizzes {
     row-gap: 14px;
+    width: 340px;
+  }
+  .todos-quizzes > p {
+    width: 340px;
   }
   .startAddQuizz {
     width: 100vw;
   }
   .infoQuizz {
     width: 100vw;
+  }
+  .banner,
+  .bannerImage {
+    height: 142px;
+  }
+  .banner > p {
+    font-size: 25px;
+  }
+  .quizzesPraJogar {
+    width: 375px;
+    margin: 166px auto;
+    row-gap: 28px;
+  }
+  .quizzesPraJogar > li {
+    width: 100%;
+    height: 436px;
+  }
+
+  .quizzesPraJogar > li._quizz {
+    height: 436px;
+    width: 375px;
+    gap: 0;
+  }
+  ._quizz > div {
+    width: 340px;
+    height: 89px;
+  }
+  ._quizzTitulo {
+    font-size: 19px;
+  }
+  ._quizzAlternativas {
+    width: 375px;
+    height: 300px;
+    gap: 12px;
+  }
+  ._quizzAlternativas > li {
+    width: 163px;
+    height: 113px;
+  }
+  ._quizzAlternativas > li > img {
+    width: 163px;
+    height: 113px;
+  }
+  ._quizzAlternativas > li > p {
+    font-size: 13px;
+    height: 22px;
+  }
+  li._resultado {
+    height: 500px;
+  }
+  ._pontuacao {
+    width: 340px;
+    height: 99px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  ._pontuacao > p {
+    width: 308px;
+    font-size: 19px;
+    text-align: center;
+  }
+  ._pontuacao2 {
+    width: 340px;
+    flex-direction: column;
+    row-gap: 12px;
+  }
+  ._pontuacao2 > p {
+    line-height: 19px;
+    font-size: 17px;
+  }
+
+  ._pontuacao2 > img {
+    width: 340px;
+  }
+  .seus-quizzes-lista {
+    width: 340px;
+  }
+  .seus-quizzes {
+    width: 340px;
   }
 }
