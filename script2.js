@@ -16,6 +16,7 @@ function renderizarInfoQuizz(){
         </div>
         <button onclick="validarInfoQuizz()">Prosseguir para criar perguntas</button>
     </div>`;
+    
     return renderizar;
 }
 
@@ -165,5 +166,4 @@ function expandir(){
 
 //ADICIONAR OPÇÕES DE RESPOSTAS INCORRETAS COM EXPANDE
 //definir cada item da resposta como um parametro de objeto e colocar numa função for para cada parametro ser um [i]
-//fazer funções de renderizar as páginas
 //criar quantidade de perguntas de acordo com a quantidade que foi inserida nas informações
