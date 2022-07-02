@@ -13,12 +13,14 @@ quizz = [{
         ]
     ]
 }]
-
+ 
 
 
 function renderizarInfoQuizz(){
     let telaInicial = document.querySelector('.tela-inicial');
     telaInicial.innerHTML = "";
+    let telaJogar = document.querySelector('.tela-jogarQuizz')
+    telaJogar.innerHTML = "";
     let telaQuizz = document.querySelector('.tela-quizz');
     telaQuizz.innerHTML = "";
     let renderizar = telaQuizz.innerHTML += `
