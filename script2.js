@@ -1,4 +1,20 @@
-let quizz = "";
+let quizz = [];
+
+quizz = [{
+    title: `${tituloQuizz.value}`
+    image: `${url.value}`
+    questions: [
+        title: `${perguntaQuizz.value}`
+        color: `${corPergunta.value}`
+        answers: [
+            text: `${respostaPergunta.value}`
+            image: `${urlPergunta.value}`
+            isCorrectAnswer: 
+        ]
+    ]
+}]
+
+
 
 function renderizarInfoQuizz(){
     let telaInicial = document.querySelector('.tela-inicial');
@@ -23,17 +39,30 @@ function renderizarInfoQuizz(){
 function validarInfoQuizz(){
     let tituloQuizz = document.querySelector('.titulo-novo-quizz');
     let caracTitulo = ((tituloQuizz.value).toString()).length;
-    let url = document.querySelector('.url-novo-quizz');
+    let urlInfo = document.querySelector('.url-novo-quizz');
     let urlQuizz = ((url.value).toString());
     let qtdadeQuizz = document.querySelector('.pergunta-novo-quizz');
     let niveisQuizz = document.querySelector('.niveis-novo-quizz');
 
-    if ((tituloQuizz.value !== "" && tituloQuizz.value !== undefined && caracTitulo >=20 && caracTitulo <=60) && (url.value !== "" urlQuizz.includes('https') || urlQuizz.includes('http') || urlQuizz.includes('.jpeg') || urlQuizz.includes('.png') || urlQuizz.includes('jpeg')) && (Number(qtdadeQuizz.value)>=3) && (Number(niveisQuizz.value)>=2)){
-        renderizarPerguntasQuizz(); 
+    quizz = [{
+        title: `${tituloQuizz.value}`
+        image: `${url.value}`
+        questions: [`${
+            for(let i=0; i < qtdadeQuizz.length, i++){
+            let 
+            }
+        }`]
+    }]
+
+    let promise = axios.post('https://mock-api.driven.com.br/api/v4/buzzquizz/quizzes', quizz);
+
+    if ((tituloQuizz.value !== "" && tituloQuizz.value !== undefined && caracTitulo >=20 && caracTitulo <=60) && (urlInfo.value !== "" && urlQuizz.includes('https') || urlQuizz.includes('http') || urlQuizz.includes('.jpeg') || urlQuizz.includes('.png') || urlQuizz.includes('jpeg')) && (Number(qtdadeQuizz.value)>=3) && (Number(niveisQuizz.value)>=2)){
+        renderizarPerguntasQuizz();
     } else {
         alert('Favor preencher os dados corretamente.')
     }
 }
+
 
 function renderizarPerguntasQuizz(){
     let telaQuizz = document.querySelector('.tela-quizz');
@@ -75,10 +104,10 @@ function validarPerguntasQuizz(){
     let caracPergunta = ((perguntaQuizz.value).toString()).length;
     let corPergunta = document.querySelector('.cor-pergunta');
     let respostaPergunta = document.querySelector('.resposta-pergunta');
-    let url = document.querySelector('.url-pergunta');
-    let urlPergunta = ((url.value).toString());
+    let urlPergunta = document.querySelector('.url-pergunta');
+    let urlQuizz = ((url.value).toString());
 
-    if ((perguntaQuizz.value !== "" && caracPergunta >=20) && (corPergunta.value !== "") && (respostaPergunta.value !== "") &&  (url.value !== "" && urlPergunta.includes('https') || urlPergunta.includes('http') || urlPergunta.includes('.jpeg') || urlPergunta.includes('.png') || urlPergunta.includes('jpeg'))){
+    if ((perguntaQuizz.value !== "" && caracPergunta >=20) && (corPergunta.value !== "") && (respostaPergunta.value !== "") &&  (urlPergunta.value !== "" && urlQuizz.includes('https') || urlQuizz.includes('http') || urlQuizz.includes('.jpeg') || urlQuizz.includes('.png') || urlQuizz.includes('jpeg'))){
         renderizarNiveisQuizz();
     } else {
         alert('Favor preencher os dados corretamente.')
@@ -149,11 +178,9 @@ function renderizarSucessoQuizz() {
 }
 
 function renderizarQuizz() {
-
 }
 
 function renderizarHome() {
-
 }
 
 function postNovoQuizz(){
@@ -161,7 +188,6 @@ function postNovoQuizz(){
 }
 
 function expandir(){
-    console.log('aqui tem que expandir');
 }
 
 //ADICIONAR OPÇÕES DE RESPOSTAS INCORRETAS COM EXPANDE
