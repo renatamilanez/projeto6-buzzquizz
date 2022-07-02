@@ -27,7 +27,7 @@ function validarInfoQuizz(){
     let qtdadeQuizz = document.querySelector('.pergunta-novo-quizz');
     let niveisQuizz = document.querySelector('.niveis-novo-quizz');
 
-    if ((tituloQuizz.value !== "" && tituloQuizz.value !== undefined && caracTitulo >=20 && caracTitulo <=60) && (urlQuizz.includes('https') || urlQuizz.includes('http') || urlQuizz.includes('.jpeg') || urlQuizz.includes('.png') || urlQuizz.includes('jpeg')) && (Number(qtdadeQuizz.value)>=3) && (Number(niveisQuizz.value)>=2)){
+    if ((tituloQuizz.value !== "" && tituloQuizz.value !== undefined && caracTitulo >=20 && caracTitulo <=60) && (url.value !== "" urlQuizz.includes('https') || urlQuizz.includes('http') || urlQuizz.includes('.jpeg') || urlQuizz.includes('.png') || urlQuizz.includes('jpeg')) && (Number(qtdadeQuizz.value)>=3) && (Number(niveisQuizz.value)>=2)){
         renderizarPerguntasQuizz(); 
     } else {
         alert('Favor preencher os dados corretamente.')
@@ -77,7 +77,7 @@ function validarPerguntasQuizz(){
     let url = document.querySelector('.url-pergunta');
     let urlPergunta = ((url.value).toString());
 
-    if ((perguntaQuizz.value !== "" && caracPergunta >=20) && (corPergunta.value !== "") && (respostaPergunta.value !== "") &&  (urlPergunta.includes('https') || urlPergunta.includes('http') || urlPergunta.includes('.jpeg') || urlPergunta.includes('.png') || urlPergunta.includes('jpeg'))){
+    if ((perguntaQuizz.value !== "" && caracPergunta >=20) && (corPergunta.value !== "") && (respostaPergunta.value !== "") &&  (url.value !== "" && urlPergunta.includes('https') || urlPergunta.includes('http') || urlPergunta.includes('.jpeg') || urlPergunta.includes('.png') || urlPergunta.includes('jpeg'))){
         renderizarNiveisQuizz();
     } else {
         alert('Favor preencher os dados corretamente.')
@@ -122,7 +122,7 @@ function validarNiveisQuizz(){
     let descricaoNivel = document.querySelector('.descricao-nivel');
     let caracDescricao = ((descricaoNivel.value).toString()).length;
 
-    if ((tituloNivel !== "" && caracTitulo >=10) && (porcentagemNivel !== "" && porcentagemNivel >=0 && porcentagemNivel <= 100) &&  (urlNivel.includes('https') || urlNivel.includes('http') || urlNivel.includes('.jpeg') || urlNivel.includes('.png') || urlNivel.includes('jpeg')) && (descricaoNivel !== "" && caracDescricao >= 30)){
+    if ((tituloNivel !== "" && caracTitulo >=10) && (porcentagemNivel !== "" && porcentagemNivel >=0 && porcentagemNivel <= 100) &&  (url.value !== "" && urlNivel.includes('https') || urlNivel.includes('http') || urlNivel.includes('.jpeg') || urlNivel.includes('.png') || urlNivel.includes('jpeg')) && (descricaoNivel !== "" && caracDescricao >= 30)){
         renderizarSucessoQuizz();
     } else {
         alert('Favor preencher os dados corretamente.')
