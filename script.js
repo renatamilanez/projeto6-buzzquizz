@@ -58,46 +58,6 @@ function telaJogarQuizz(elemento) {
 function renderizarQuizz(elemento) {
   const id = elemento.className.slice(1);
   const UL_ALTERNATIVAS = document.querySelector("._quizzAlternativas");
-
-  // UL_ALTERNATIVAS.innerHTML += `<li>
-  //                                 <img src= />
-  //                                 <p></p>
-  //                               </li>`;
-  // UL_ALTERNATIVAS.innerHTML = "";
-  console.log(id);
-  //   const LI_TEMPLATE = `<li class="_quizz">
-  //   <div>
-  //     <p class="_quizzTitulo">
-  //       ${TITULO}
-  //     </p>
-  //   </div>
-  //   <ul class="_quizzAlternativas">
-  //     <li>
-  //       <img
-  //         src="${ALTERNATIVA_1}"
-  //       />
-  //       <p>${TITULO_1}</p>
-  //     </li>
-  //     <li>
-  //       <img
-  //         src="${ALTERNATIVA_2}"
-  //       />
-  //       <p>${TITULO_2}</p>
-  //     </li>
-  //     <li>
-  //       <img
-  //         src="${ALTERNATIVA_3}"
-  //       />
-  //       <p>${TITULO_3}</p>
-  //     </li>
-  //     <li>
-  //       <img
-  //         src="${ALTERNATIVA_4}"
-  //       />
-  //       <p>${TITULO_4}</p>
-  //     </li>
-  //   </ul>
-  // </li>`;
   axios
     .get(`https://mock-api.driven.com.br/api/v7/buzzquizz/quizzes/${id}`)
     .catch((error) => console.log(error))
