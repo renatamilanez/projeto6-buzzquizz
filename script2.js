@@ -11,6 +11,76 @@ let porcentagemNivel = Number(document.querySelector('.porcentagem-nivel').value
 let urlNivel = document.querySelector('.url-nivel');
 let descricaoNivel = document.querySelector('.descricao-nivel');
 
+quizz = {
+	title: `${tituloQuizz.value}`,
+	image: `${urlInfo.value}`,
+	questions: [
+		{
+			title: `${perguntaQuizz[i].value}`,
+			color: `${corPergunta[i].value}`,
+			answers: [
+				{
+					text: `${respostaPergunta[i].value}`,
+					image: `${urlPergunta[i].value}`,
+					isCorrectAnswer: true
+				},
+				{
+					text: `${respostaPergunta[i].value}`,
+					image: `${urlPergunta[i].value}`,
+					isCorrectAnswer: false
+				}
+			]
+		},
+		{
+			title: `${perguntaQuizz[i].value}`,
+			color: `${corPergunta[i].value}`,
+			answers: [
+				{
+					text: `${respostaPergunta[i].value}`,
+					image: `${urlPergunta[i].value}`,
+					isCorrectAnswer: true
+				},
+				{
+					text: `${respostaPergunta[i].value}`,
+					image: `${urlPergunta[i].value}`,
+					isCorrectAnswer: false
+				}
+			]
+		},
+		{
+			title: `${perguntaQuizz[i].value}`,
+			color: `${corPergunta[i].value}`,
+			answers: [
+				{
+					text: `${respostaPergunta[i].value}`,
+					image: `${urlPergunta[i].value}`,
+					isCorrectAnswer: true
+				},
+				{
+					text: `${respostaPergunta[i].value}`,
+					image: `${urlPergunta[i].value}`,
+					isCorrectAnswer: false
+				}
+			]
+		}
+	],
+	levels: [
+		{
+			title: `${tituloNivel[i].value}`,
+			image: `${urlNivel[i].value}`,
+			text: `${descricaoNivel[i].value}`,
+			minValue: `${porcentagemNivel[i].value}`
+		},
+		{
+			title: `${tituloNivel[i].value}`,
+			image: `${urlNivel[i].value}`,
+			text: `${descricaoNivel[i].value}`,
+			minValue: `${porcentagemNivel[i].value}`
+		}
+	]
+}
+
+
 function renderizarInfoQuizz(){
     let telaInicial = document.querySelector('.tela-inicial');
     telaInicial.innerHTML = "";
@@ -172,7 +242,7 @@ function renderizarSucessoQuizz() {
             <img src="">
         
             <button onclick="renderizarQuizz()">Acessar Quizz</button>
-            <a onclick="renderizarHome()">Voltar para home</a>
+            <a onclick="telaHome()">Voltar para home</a>
         </div>
     </div>
     `;
@@ -180,10 +250,6 @@ function renderizarSucessoQuizz() {
 }
 
 function renderizarQuizz() {
-}
-
-function renderizarHome() {
-
 }
 
 function postNovoQuizz(){
