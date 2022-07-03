@@ -1,20 +1,15 @@
 let quizz = [];
-
-quizz = [{
-    title: `${tituloQuizz.value}`
-    image: `${url.value}`
-    questions: [
-        title: `${perguntaQuizz.value}`
-        color: `${corPergunta.value}`
-        answers: [
-            text: `${respostaPergunta.value}`
-            image: `${urlPergunta.value}`
-            isCorrectAnswer: 
-        ]
-    ]
-}]
- 
-
+let tituloQuizz = document.querySelector('.titulo-novo-quizz');
+let urlInfo = document.querySelector('.url-novo-quizz');
+let qtdadeQuizz = document.querySelector('.pergunta-novo-quizz');
+let perguntaQuizz = document.querySelector('.texto-pergunta');
+let corPergunta = document.querySelector('.cor-pergunta');
+let respostaPergunta = document.querySelector('.resposta-pergunta');
+let urlPergunta = document.querySelector('.url-pergunta');
+let tituloNivel = document.querySelector('.titulo-nivel');
+let porcentagemNivel = Number(document.querySelector('.porcentagem-nivel').value);
+let urlNivel = document.querySelector('.url-nivel');
+let descricaoNivel = document.querySelector('.descricao-nivel');
 
 function renderizarInfoQuizz(){
     let telaInicial = document.querySelector('.tela-inicial');
@@ -39,24 +34,12 @@ function renderizarInfoQuizz(){
 }
 
 function validarInfoQuizz(){
-    let tituloQuizz = document.querySelector('.titulo-novo-quizz');
+    tituloQuizz = document.querySelector('.titulo-novo-quizz');
     let caracTitulo = ((tituloQuizz.value).toString()).length;
-    let urlInfo = document.querySelector('.url-novo-quizz');
-    let urlQuizz = ((url.value).toString());
-    let qtdadeQuizz = document.querySelector('.pergunta-novo-quizz');
+    urlInfo = document.querySelector('.url-novo-quizz');
+    let urlQuizz = ((urlInfo.value).toString());
+    qtdadeQuizz = document.querySelector('.pergunta-novo-quizz');
     let niveisQuizz = document.querySelector('.niveis-novo-quizz');
-
-    quizz = [{
-        title: `${tituloQuizz.value}`
-        image: `${url.value}`
-        questions: [`${
-            for(let i=0; i < qtdadeQuizz.length, i++){
-            let 
-            }
-        }`]
-    }]
-
-    let promise = axios.post('https://mock-api.driven.com.br/api/v4/buzzquizz/quizzes', quizz);
 
     if ((tituloQuizz.value !== "" && tituloQuizz.value !== undefined && caracTitulo >=20 && caracTitulo <=60) && (urlInfo.value !== "" && urlQuizz.includes('https') || urlQuizz.includes('http') || urlQuizz.includes('.jpeg') || urlQuizz.includes('.png') || urlQuizz.includes('jpeg')) && (Number(qtdadeQuizz.value)>=3) && (Number(niveisQuizz.value)>=2)){
         renderizarPerguntasQuizz();
@@ -65,6 +48,23 @@ function validarInfoQuizz(){
     }
 }
 
+function postarQuiz(){
+    quizz = [{
+        title: `${tituloQuizz.value}`,
+        image: `${urlInfo.value}`,
+        questions: []
+    }]
+
+    for (let i=0; i < qtdadeQuizz.value; i++){
+        let qtdadeQuestions = {
+        title: `${perguntaQuizz[i].value}`,
+        color: `${corPergunta[i].value}`,
+        answers: []}
+    }
+
+    let promise = axios.post('https://mock-api.driven.com.br/api/v4/buzzquizz/quizzes', quizz);
+    promise.catch()
+}
 
 function renderizarPerguntasQuizz(){
     let telaQuizz = document.querySelector('.tela-quizz');
@@ -102,12 +102,12 @@ function renderizarPerguntasQuizz(){
 }
 
 function validarPerguntasQuizz(){
-    let perguntaQuizz = document.querySelector('.texto-pergunta');
+    perguntaQuizz = document.querySelector('.texto-pergunta');
     let caracPergunta = ((perguntaQuizz.value).toString()).length;
-    let corPergunta = document.querySelector('.cor-pergunta');
-    let respostaPergunta = document.querySelector('.resposta-pergunta');
-    let urlPergunta = document.querySelector('.url-pergunta');
-    let urlQuizz = ((url.value).toString());
+    corPergunta = document.querySelector('.cor-pergunta');
+    respostaPergunta = document.querySelector('.resposta-pergunta');
+    urlPergunta = document.querySelector('.url-pergunta');
+    let urlQuizz = ((urlPergunta.value).toString());
 
     if ((perguntaQuizz.value !== "" && caracPergunta >=20) && (corPergunta.value !== "") && (respostaPergunta.value !== "") &&  (urlPergunta.value !== "" && urlQuizz.includes('https') || urlQuizz.includes('http') || urlQuizz.includes('.jpeg') || urlQuizz.includes('.png') || urlQuizz.includes('jpeg'))){
         renderizarNiveisQuizz();
@@ -146,15 +146,15 @@ function renderizarNiveisQuizz(){
 }
 
 function validarNiveisQuizz(){
-    let tituloNivel = document.querySelector('.titulo-nivel');
+    tituloNivel = document.querySelector('.titulo-nivel');
     let caracTitulo = ((tituloNivel.value).toString()).length;
-    let porcentagemNivel = Number(document.querySelector('.porcentagem-nivel').value);
-    let url = document.querySelector('.url-nivel');
-    let urlNivel = ((url.value).toString());
-    let descricaoNivel = document.querySelector('.descricao-nivel');
+    porcentagemNivel = Number(document.querySelector('.porcentagem-nivel').value);
+    urlNivel = document.querySelector('.url-nivel');
+    let urlQuizz = ((urlNivel.value).toString());
+    descricaoNivel = document.querySelector('.descricao-nivel');
     let caracDescricao = ((descricaoNivel.value).toString()).length;
 
-    if ((tituloNivel !== "" && caracTitulo >=10) && (porcentagemNivel !== "" && porcentagemNivel >=0 && porcentagemNivel <= 100) &&  (url.value !== "" && urlNivel.includes('https') || urlNivel.includes('http') || urlNivel.includes('.jpeg') || urlNivel.includes('.png') || urlNivel.includes('jpeg')) && (descricaoNivel !== "" && caracDescricao >= 30)){
+    if ((tituloNivel !== "" && caracTitulo >=10) && (porcentagemNivel !== "" && porcentagemNivel >=0 && porcentagemNivel <= 100) &&  (urlNivel.value !== "" && urlQuizz.includes('https') || urlQuizz.includes('http') || urlQuizz.includes('.jpeg') || urlQuizz.includes('.png') || urlQuizz.includes('jpeg')) && (descricaoNivel !== "" && caracDescricao >= 30)){
         renderizarSucessoQuizz();
     } else {
         alert('Favor preencher os dados corretamente.')
@@ -183,6 +183,7 @@ function renderizarQuizz() {
 }
 
 function renderizarHome() {
+
 }
 
 function postNovoQuizz(){
@@ -190,8 +191,11 @@ function postNovoQuizz(){
 }
 
 function expandir(){
+
 }
 
 //ADICIONAR OPÇÕES DE RESPOSTAS INCORRETAS COM EXPANDE
 //definir cada item da resposta como um parametro de objeto e colocar numa função for para cada parametro ser um [i]
 //criar quantidade de perguntas de acordo com a quantidade que foi inserida nas informações
+
+
