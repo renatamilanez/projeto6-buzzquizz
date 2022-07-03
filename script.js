@@ -1,3 +1,5 @@
+// ...
+
 const DOM = {
   TODOS_QUIZZES_UL: document.querySelector(".quizzes"),
   quizzesGerados: "",
