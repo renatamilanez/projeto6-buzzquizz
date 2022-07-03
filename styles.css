@@ -194,6 +194,7 @@ main {
 }
 
 .banner {
+  position: relative;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -497,7 +498,7 @@ main {
 
   .quizzesPraJogar > li._quizz {
     height: 436px;
-    width: 375px;
+    width: 360px;
     gap: 10;
   }
   ._quizz > div {
