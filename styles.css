@@ -193,6 +193,7 @@ main {
 }
 
 .banner {
+  position: relative;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -208,13 +209,14 @@ main {
   z-index: 1;
   font-size: 39px;
   color: #ffffff;
+  text-shadow: 1px 5px 5px black;
 }
 
 .bannerImage {
   position: absolute;
   width: 100%;
   height: 227px;
-  object-fit: cover;
+  object-fit: fill;
 }
 
 .quizzesPraJogar {
@@ -222,13 +224,11 @@ main {
   margin: 269px auto;
   display: flex;
   flex-direction: column;
-  row-gap: 42px;
+  row-gap: 102px;
 }
 
 .quizzesPraJogar > li._quizz {
   width: 100%;
-  height: 676px;
-  /* background-color: #f5ceff; */
   background-color: #ffffff;
 }
 
@@ -253,14 +253,12 @@ main {
 ._quizzTitulo {
   color: #ffffff;
   font-size: 23px;
-  word-break: break-all;
+  word-wrap: break-word;
 }
 
 ._quizzAlternativas {
-  /* background-color: red; */
   display: flex;
   flex-wrap: wrap;
-  justify-content: center;
   align-items: center;
   gap: 24px;
   width: 688px;
@@ -268,23 +266,26 @@ main {
 }
 
 ._quizzAlternativas > li {
-  /* background-color: white; */
   width: 329px;
   height: 216px;
+  display: flex;
+  flex-direction: column;
+  row-gap: 15px;
 }
 
 ._quizzAlternativas > li > img {
   width: 329px;
   height: 175px;
-  object-fit: cover;
+  object-fit: fill;
 }
 
 ._quizzAlternativas > li > p {
-  height: 34px;
+  height: 64px;
   display: flex;
   align-items: center;
   font-size: 20px;
   font-weight: 700;
+  word-break: break-all;
 }
 
 ._resultado {
@@ -308,9 +309,13 @@ main {
 }
 
 ._pontuacao > p {
+  display: flex;
+  justify-content: center;
+  text-align: center;
   color: #ffffff;
   font-size: 23px;
   font-weight: 700;
+  width: 700px;
 }
 
 ._pontuacao2 {
@@ -323,7 +328,7 @@ main {
 ._pontuacao2 > img {
   width: 364px;
   height: 273px;
-  object-fit: cover;
+  object-fit: fill;
 }
 
 ._pontuacao2 > p {
@@ -333,6 +338,7 @@ main {
   font-size: 19px;
   font-weight: 700;
   line-height: 25px;
+  word-break: break-all;
 }
 
 ._reiniciarQuizz {
@@ -367,6 +373,14 @@ main {
   border: 0;
   width: 260px;
   height: 44px;
+}
+
+.true {
+  color: #000000;
+}
+
+.false {
+  color: #000000;
 }
 
 .tela-quizz {
@@ -489,18 +503,24 @@ a {
 
 @media (max-width: 1100px) {
   main {
-    width: 375px;
+    width: 100%;
     margin: 31px auto 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
   }
   .tela-inicial {
     row-gap: 35px;
   }
   .criar-quizz {
-    width: 340px;
+    width: 100%;
   }
   .todos-quizzes {
     row-gap: 14px;
-    width: 340px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
   }
   .todos-quizzes > p {
     width: 340px;
@@ -522,9 +542,9 @@ a {
     font-size: 25px;
   }
   .quizzesPraJogar {
-    width: 375px;
+    width: 100%;
     margin: 166px auto;
-    row-gap: 28px;
+    row-gap: 88px;
   }
   .quizzesPraJogar > li {
     width: 100%;
@@ -532,8 +552,8 @@ a {
   }
   .quizzesPraJogar > li._quizz {
     height: 436px;
-    width: 375px;
-    gap: 0;
+    width: 360px;
+    gap: 10;
   }
   ._quizz > div {
     width: 340px;
@@ -541,19 +561,25 @@ a {
   }
   ._quizzTitulo {
     font-size: 19px;
+    word-break: break-all;
+  }
+  .quizzes {
+    width: 360px;
   }
   ._quizzAlternativas {
-    width: 375px;
+    width: 340px;
     height: 300px;
     gap: 12px;
   }
   ._quizzAlternativas > li {
     width: 163px;
-    height: 113px;
+    height: 183px;
+    object-fit: fill;
   }
   ._quizzAlternativas > li > img {
     width: 163px;
     height: 113px;
+    object-fit: fill;
   }
   ._quizzAlternativas > li > p {
     font-size: 13px;
@@ -564,7 +590,7 @@ a {
   }
   ._pontuacao {
     width: 340px;
-    height: 99px;
+    height: 89px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -586,10 +612,13 @@ a {
   ._pontuacao2 > img {
     width: 340px;
   }
-  .seus-quizzes-lista {
-    width: 340px;
+  ul.seus-quizzes-lista {
+    width: 100%;
   }
   .seus-quizzes {
     width: 340px;
+  }
+  .bannerTitulo {
+    word-break: break-all;
   }
 }
