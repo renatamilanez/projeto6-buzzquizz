@@ -30,7 +30,7 @@ function renderizarInfoQuizz(){
         <h5>Comece pelo começo</h5>
         <div class="main-container">
         <div class="container-quizz">
-            <input class="titulo-novo-quizz" type="text" placeholder="Título do seu quizz" required minlength="20" maxlength="60">
+            <input class="titulo-novo-quizz" type="text" placeholder="Título do seu quizz" required minlength="20" maxlength="65">
             <input class="url-novo-quizz" type="url" required placeholder="URL da imagem do seu quizz">
             <input class="pergunta-novo-quizz" required type="number" placeholder="Quantidade de perguntas do seu quizz">
             <input class="niveis-novo-quizz" type="number" required placeholder="Quantidade de níveis do seu quizz">
@@ -50,10 +50,9 @@ function validarInfoQuizz(){
     qtdadeQuizz = document.querySelector('.pergunta-novo-quizz');
     niveisQuizz = document.querySelector('.niveis-novo-quizz');
 
-    if ((tituloQuizz.value !== "" && tituloQuizz.value !== undefined && caracTitulo >=20 && caracTitulo <=60) && (urlInfo.value !== "" && urlQuizz.includes('https') || urlQuizz.includes('http') || urlQuizz.includes('.jpeg') || urlQuizz.includes('.png') || urlQuizz.includes('jpeg')) && (Number(qtdadeQuizz.value)>=3) && (Number(niveisQuizz.value)>=2)){
+    if ((tituloQuizz.value !== "" && tituloQuizz.value !== undefined && caracTitulo >=20 && caracTitulo <=65) && (urlInfo.value !== "" && urlQuizz.includes('https') || urlQuizz.includes('http') || urlQuizz.includes('.jpeg') || urlQuizz.includes('.png') || urlQuizz.includes('jpeg')) && (Number(qtdadeQuizz.value)>=3) && (Number(niveisQuizz.value)>=2)){
         quizz.title = tituloQuizz.value;
         quizz.image = urlInfo.value;
-        console.log(quizz)
         renderizarPerguntasQuizz();
     } else {
         alert('Favor preencher os dados corretamente.')
@@ -63,8 +62,6 @@ function validarInfoQuizz(){
 function renderizarPerguntasQuizz(){
     let telaQuizz = document.querySelector('.main-container');
     telaQuizz.innerHTML = "";
-
-    console.log(qtdadeQuizz.value);
 
     for(let i=1; i <= (qtdadeQuizz.value); i++){
         telaQuizz.innerHTML += `
@@ -119,7 +116,7 @@ function validarPerguntasQuizz(){
     && (corPergunta.value !== "") 
     && (resposta1.value !== "" 
     && resposta2.value !== "") 
-    && (url1.value !== "" 
+    && (url1.value !== ""
     && urlQuizz1.includes('https') 
     || urlQuizz1.includes('http') 
     || urlQuizz1.includes('.jpeg') 
@@ -254,8 +251,8 @@ function verificarNivelZero(){
     return valido;
 }
 
+let listaId = [];
 async function salvarNiveisQuizz(){
-    debugger
     for(let j=1; j <= (qtdadeQuizz.value); j++){
         const infoApi = {   
                         title: `${tituloNivel.value}`,
@@ -266,16 +263,31 @@ async function salvarNiveisQuizz(){
         quizz.levels.push(infoApi);
     }
     console.log(quizz);
+    /*let promise = await axios.post('https://mock-api.driven.com.br/api/v7/buzzquizz/quizzes/', quizz)
+    promise.catch(erroAPI);
+    promise.then(enviarLocalStorage)*/
+
 
     try {
         let promise = await axios.post('https://mock-api.driven.com.br/api/v7/buzzquizz/quizzes/', quizz)
-        renderizarSucessoQuizz()
+        let id = promise.data.id;
+        listaId.push(id);
+        let listaIdString = JSON.stringify(listaId);
+        localStorage.setItem("lista de ids", listaIdString);
+        renderizarSucessoQuizz();
     } catch (error) {
         erroAPI();
     }
 }
-
 //promise.data.id === localStorage.getItem('id')
+/*function enviarLocalStorage(){
+    let id = promise.data.id;
+    let listaId = [];
+    listaId.push(id);
+    listaIdString = JSON.stringify(listaId);
+    localStorage.setItem("lista de id", listaIdString);
+    renderizarSucessoQuizz();
+}*/
 
 function erroAPI(){
     console.log('não enviou')
@@ -300,5 +312,7 @@ function renderizarSucessoQuizz() {
 }
 
 function expandir(){
-
 }
+
+//colocar imagem na finalização do quizz
+//fazer abas expansivas
