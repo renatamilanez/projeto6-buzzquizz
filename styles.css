@@ -267,6 +267,7 @@ main {
   width: 688px;
   height: 138px;
   text-align: center;
+  word-break: break-all;
 }
 
 ._quizzTitulo {
