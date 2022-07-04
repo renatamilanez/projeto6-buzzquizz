@@ -239,7 +239,11 @@ function verificaResposta(elemento) {
                           <button class="_home" onclick='telaHome()'>Voltar pra home</button>
                         </div>
                       </li>`;
-      quizzesUL.innerHTML += resultado;
+      // quizzesUL.innerHTML += resultado;
+      setTimeout(() => {
+        quizzesUL.innerHTML += resultado;
+        window.scrollBy(0, 900);
+      }, 2000);
     }
   }
 }

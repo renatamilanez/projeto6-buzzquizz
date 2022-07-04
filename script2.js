@@ -1,24 +1,24 @@
 let quizz = [];
-let tituloQuizz = document.querySelector('.titulo-novo-quizz');
-let urlInfo = document.querySelector('.url-novo-quizz');
-let qtdadeQuizz = document.querySelector('.pergunta-novo-quizz');
-let perguntaQuizz = document.querySelector('.texto-pergunta');
-let corPergunta = document.querySelector('.cor-pergunta');
-let respostaPergunta = document.querySelector('.resposta-pergunta');
-let urlPergunta = document.querySelector('.url-pergunta');
-let tituloNivel = document.querySelector('.titulo-nivel');
-let porcentagemNivel = Number(document.querySelector('.porcentagem-nivel').value);
-let urlNivel = document.querySelector('.url-nivel');
-let descricaoNivel = document.querySelector('.descricao-nivel');
+let tituloQuizz = document.querySelector(".titulo-novo-quizz");
+let urlInfo = document.querySelector(".url-novo-quizz");
+let qtdadeQuizz = document.querySelector(".pergunta-novo-quizz");
+let perguntaQuizz = document.querySelector(".texto-pergunta");
+let corPergunta = document.querySelector(".cor-pergunta");
+let respostaPergunta = document.querySelector(".resposta-pergunta");
+let urlPergunta = document.querySelector(".url-pergunta");
+let tituloNivel = document.querySelector(".titulo-nivel");
+let porcentagemNivel = Number(document.querySelector(".porcentagem-nivel"));
+let urlNivel = document.querySelector(".url-nivel");
+let descricaoNivel = document.querySelector(".descricao-nivel");
 
-function renderizarInfoQuizz(){
-    let telaInicial = document.querySelector('.tela-inicial');
-    telaInicial.innerHTML = "";
-    let telaJogar = document.querySelector('.tela-jogarQuizz')
-    telaJogar.innerHTML = "";
-    let telaQuizz = document.querySelector('.tela-quizz');
-    telaQuizz.innerHTML = "";
-    let renderizar = telaQuizz.innerHTML += `
+function renderizarInfoQuizz() {
+  let telaInicial = document.querySelector(".tela-inicial");
+  telaInicial.innerHTML = "";
+  let telaJogar = document.querySelector(".tela-jogarQuizz");
+  telaJogar.innerHTML = "";
+  let telaQuizz = document.querySelector(".tela-quizz");
+  telaQuizz.innerHTML = "";
+  let renderizar = (telaQuizz.innerHTML += `
     <div class="template-novo-quizz">
         <h5>Comece pelo começo</h5>
         <div class="container-quizz">
@@ -28,48 +28,66 @@ function renderizarInfoQuizz(){
             <input class="niveis-novo-quizz" type="number" required placeholder="Quantidade de níveis do seu quizz">
         </div>
         <button onclick="validarInfoQuizz()">Prosseguir para criar perguntas</button>
-    </div>`;
-    
-    return renderizar;
+    </div>`);
+
+  return renderizar;
 }
 
-function validarInfoQuizz(){
-    tituloQuizz = document.querySelector('.titulo-novo-quizz');
-    let caracTitulo = ((tituloQuizz.value).toString()).length;
-    urlInfo = document.querySelector('.url-novo-quizz');
-    let urlQuizz = ((urlInfo.value).toString());
-    qtdadeQuizz = document.querySelector('.pergunta-novo-quizz');
-    let niveisQuizz = document.querySelector('.niveis-novo-quizz');
+function validarInfoQuizz() {
+  tituloQuizz = document.querySelector(".titulo-novo-quizz");
+  let caracTitulo = tituloQuizz.value.toString().length;
+  urlInfo = document.querySelector(".url-novo-quizz");
+  let urlQuizz = urlInfo.value.toString();
+  qtdadeQuizz = document.querySelector(".pergunta-novo-quizz");
+  let niveisQuizz = document.querySelector(".niveis-novo-quizz");
 
-    if ((tituloQuizz.value !== "" && tituloQuizz.value !== undefined && caracTitulo >=20 && caracTitulo <=60) && (urlInfo.value !== "" && urlQuizz.includes('https') || urlQuizz.includes('http') || urlQuizz.includes('.jpeg') || urlQuizz.includes('.png') || urlQuizz.includes('jpeg')) && (Number(qtdadeQuizz.value)>=3) && (Number(niveisQuizz.value)>=2)){
-        renderizarPerguntasQuizz();
-    } else {
-        alert('Favor preencher os dados corretamente.')
-    }
+  if (
+    tituloQuizz.value !== "" &&
+    tituloQuizz.value !== undefined &&
+    caracTitulo >= 20 &&
+    caracTitulo <= 60 &&
+    ((urlInfo.value !== "" && urlQuizz.includes("https")) ||
+      urlQuizz.includes("http") ||
+      urlQuizz.includes(".jpeg") ||
+      urlQuizz.includes(".png") ||
+      urlQuizz.includes("jpeg")) &&
+    Number(qtdadeQuizz.value) >= 3 &&
+    Number(niveisQuizz.value) >= 2
+  ) {
+    renderizarPerguntasQuizz();
+  } else {
+    alert("Favor preencher os dados corretamente.");
+  }
 }
 
-function postarQuiz(){
-    quizz = [{
-        title: `${tituloQuizz.value}`,
-        image: `${urlInfo.value}`,
-        questions: []
-    }]
+function postarQuiz() {
+  quizz = [
+    {
+      title: `${tituloQuizz.value}`,
+      image: `${urlInfo.value}`,
+      questions: [],
+    },
+  ];
 
-    for (let i=0; i < qtdadeQuizz.value; i++){
-        let qtdadeQuestions = {
-        title: `${perguntaQuizz[i].value}`,
-        color: `${corPergunta[i].value}`,
-        answers: []}
-    }
+  for (let i = 0; i < qtdadeQuizz.value; i++) {
+    let qtdadeQuestions = {
+      title: `${perguntaQuizz[i].value}`,
+      color: `${corPergunta[i].value}`,
+      answers: [],
+    };
+  }
 
-    let promise = axios.post('https://mock-api.driven.com.br/api/v4/buzzquizz/quizzes', quizz);
-    promise.catch()
+  let promise = axios.post(
+    "https://mock-api.driven.com.br/api/v4/buzzquizz/quizzes",
+    quizz
+  );
+  promise.catch();
 }
 
-function renderizarPerguntasQuizz(){
-    let telaQuizz = document.querySelector('.tela-quizz');
-    telaQuizz.innerHTML = "";
-    let renderizar =  telaQuizz.innerHTML += `          
+function renderizarPerguntasQuizz() {
+  let telaQuizz = document.querySelector(".tela-quizz");
+  telaQuizz.innerHTML = "";
+  let renderizar = (telaQuizz.innerHTML += `          
     <div class="tela-perguntas-quizz">
         <div class="template-novo-quizz"> 
             <h5>Crie suas perguntas</h5>
@@ -96,30 +114,40 @@ function renderizarPerguntasQuizz(){
 
             <button onclick="validarPerguntasQuizz()">Prosseguir para criar níveis</button>
         </div>
-    </div>`;
+    </div>`);
 
-    return renderizar;
+  return renderizar;
 }
 
-function validarPerguntasQuizz(){
-    perguntaQuizz = document.querySelector('.texto-pergunta');
-    let caracPergunta = ((perguntaQuizz.value).toString()).length;
-    corPergunta = document.querySelector('.cor-pergunta');
-    respostaPergunta = document.querySelector('.resposta-pergunta');
-    urlPergunta = document.querySelector('.url-pergunta');
-    let urlQuizz = ((urlPergunta.value).toString());
+function validarPerguntasQuizz() {
+  perguntaQuizz = document.querySelector(".texto-pergunta");
+  let caracPergunta = perguntaQuizz.value.toString().length;
+  corPergunta = document.querySelector(".cor-pergunta");
+  respostaPergunta = document.querySelector(".resposta-pergunta");
+  urlPergunta = document.querySelector(".url-pergunta");
+  let urlQuizz = urlPergunta.value.toString();
 
-    if ((perguntaQuizz.value !== "" && caracPergunta >=20) && (corPergunta.value !== "") && (respostaPergunta.value !== "") &&  (urlPergunta.value !== "" && urlQuizz.includes('https') || urlQuizz.includes('http') || urlQuizz.includes('.jpeg') || urlQuizz.includes('.png') || urlQuizz.includes('jpeg'))){
-        renderizarNiveisQuizz();
-    } else {
-        alert('Favor preencher os dados corretamente.')
-    }
+  if (
+    perguntaQuizz.value !== "" &&
+    caracPergunta >= 20 &&
+    corPergunta.value !== "" &&
+    respostaPergunta.value !== "" &&
+    ((urlPergunta.value !== "" && urlQuizz.includes("https")) ||
+      urlQuizz.includes("http") ||
+      urlQuizz.includes(".jpeg") ||
+      urlQuizz.includes(".png") ||
+      urlQuizz.includes("jpeg"))
+  ) {
+    renderizarNiveisQuizz();
+  } else {
+    alert("Favor preencher os dados corretamente.");
+  }
 }
 
-function renderizarNiveisQuizz(){
-    let telaQuizz = document.querySelector('.tela-quizz');
-    telaQuizz.innerHTML = "";
-    let renderizar =  telaQuizz.innerHTML += `        
+function renderizarNiveisQuizz() {
+  let telaQuizz = document.querySelector(".tela-quizz");
+  telaQuizz.innerHTML = "";
+  let renderizar = (telaQuizz.innerHTML += `        
     <div class="tela-niveis-quizz">
         <div class="template-novo-quizz"> 
             <h5>Agora, decida os níveis!</h5>
@@ -140,31 +168,44 @@ function renderizarNiveisQuizz(){
             
             <button onclick="validarNiveisQuizz()">Prosseguir para criar níveis</button>
         </div>
-    </div>`;
+    </div>`);
 
-    return renderizar;
+  return renderizar;
 }
 
-function validarNiveisQuizz(){
-    tituloNivel = document.querySelector('.titulo-nivel');
-    let caracTitulo = ((tituloNivel.value).toString()).length;
-    porcentagemNivel = Number(document.querySelector('.porcentagem-nivel').value);
-    urlNivel = document.querySelector('.url-nivel');
-    let urlQuizz = ((urlNivel.value).toString());
-    descricaoNivel = document.querySelector('.descricao-nivel');
-    let caracDescricao = ((descricaoNivel.value).toString()).length;
+function validarNiveisQuizz() {
+  tituloNivel = document.querySelector(".titulo-nivel");
+  let caracTitulo = tituloNivel.value.toString().length;
+  porcentagemNivel = Number(document.querySelector(".porcentagem-nivel").value);
+  urlNivel = document.querySelector(".url-nivel");
+  let urlQuizz = urlNivel.value.toString();
+  descricaoNivel = document.querySelector(".descricao-nivel");
+  let caracDescricao = descricaoNivel.value.toString().length;
 
-    if ((tituloNivel !== "" && caracTitulo >=10) && (porcentagemNivel !== "" && porcentagemNivel >=0 && porcentagemNivel <= 100) &&  (urlNivel.value !== "" && urlQuizz.includes('https') || urlQuizz.includes('http') || urlQuizz.includes('.jpeg') || urlQuizz.includes('.png') || urlQuizz.includes('jpeg')) && (descricaoNivel !== "" && caracDescricao >= 30)){
-        renderizarSucessoQuizz();
-    } else {
-        alert('Favor preencher os dados corretamente.')
-    }
+  if (
+    tituloNivel !== "" &&
+    caracTitulo >= 10 &&
+    porcentagemNivel !== "" &&
+    porcentagemNivel >= 0 &&
+    porcentagemNivel <= 100 &&
+    ((urlNivel.value !== "" && urlQuizz.includes("https")) ||
+      urlQuizz.includes("http") ||
+      urlQuizz.includes(".jpeg") ||
+      urlQuizz.includes(".png") ||
+      urlQuizz.includes("jpeg")) &&
+    descricaoNivel !== "" &&
+    caracDescricao >= 30
+  ) {
+    renderizarSucessoQuizz();
+  } else {
+    alert("Favor preencher os dados corretamente.");
+  }
 }
 
 function renderizarSucessoQuizz() {
-    let telaQuizz = document.querySelector('.tela-quizz');
-    telaQuizz.innerHTML = "";
-    let renderizar =  telaQuizz.innerHTML += `
+  let telaQuizz = document.querySelector(".tela-quizz");
+  telaQuizz.innerHTML = "";
+  let renderizar = (telaQuizz.innerHTML += `
     <div class="tela-sucesso-quizz"> 
         <div class="template-novo-quizz">
             <h5>Seu quizz está pronto!</h5>
@@ -175,27 +216,20 @@ function renderizarSucessoQuizz() {
             <a onclick="renderizarHome()">Voltar para home</a>
         </div>
     </div>
-    `;
-    return renderizar;
+    `);
+  return renderizar;
 }
 
-function renderizarQuizz() {
+function renderizarQuizz() {}
+
+function renderizarHome() {}
+
+function postNovoQuizz() {
+  //aqui deve ser armazenado no local storage
 }
 
-function renderizarHome() {
-
-}
-
-function postNovoQuizz(){
-//aqui deve ser armazenado no local storage
-}
-
-function expandir(){
-
-}
+function expandir() {}
 
 //ADICIONAR OPÇÕES DE RESPOSTAS INCORRETAS COM EXPANDE
 //definir cada item da resposta como um parametro de objeto e colocar numa função for para cada parametro ser um [i]
 //criar quantidade de perguntas de acordo com a quantidade que foi inserida nas informações
-
-

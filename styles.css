@@ -27,6 +27,7 @@ header > h2 {
   color: #ffffff;
   font-size: 37px;
   font-weight: 700;
+  cursor: pointer;
 }
 
 main {
@@ -60,7 +61,9 @@ main {
 .seus-quizzes-titulo {
   display: flex;
   align-items: center;
+  justify-content: space-between;
   column-gap: 10px;
+  margin-bottom: 14px;
 }
 
 .seus-quizzes-titulo > p {
@@ -129,7 +132,6 @@ main {
 .todos-quizzes {
   display: flex;
   flex-direction: column;
-  row-gap: 12px;
   word-break: break-all;
   width: 1050px;
 }
@@ -160,6 +162,20 @@ main {
 .quizzes > li > img {
   width: 340px;
   height: 181px;
+}
+
+.seus-quizzes-lista > li > .gradiente {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 340px;
+  height: 181px;
+  background-image: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0) 0%,
+    rgba(0, 0, 0, 0.5) 64.58%,
+    #000000 100%
+  );
 }
 
 .quizzes > li > .gradiente {
@@ -414,13 +430,12 @@ h5 {
 
 .container-quizz {
   width: 600px;
-  background-color: #ffffff;  
+  background-color: #ffffff;
   display: flex;
   padding: 21px 16px;
   flex-direction: column;
   justify-content: space-between;
 }
-
 
 .template-novo-quizz input {
   width: 100%;
@@ -437,7 +452,7 @@ h5 {
 }
 
 .tela-quizz button {
-  background-color: #EC362D;
+  background-color: #ec362d;
   width: 324px;
   height: 54px;
   color: #ffffff;
@@ -502,6 +517,9 @@ a {
 }
 
 @media (max-width: 1100px) {
+  * {
+    box-sizing: border-box;
+  }
   main {
     width: 100%;
     margin: 31px auto 0 auto;
@@ -509,22 +527,19 @@ a {
     flex-direction: column;
     align-items: center;
   }
-
   .tela-inicial {
     row-gap: 35px;
+    width: 100vw;
   }
   .criar-quizz {
     width: 100%;
   }
   .todos-quizzes {
-    row-gap: 14px;
     width: 100%;
     display: flex;
     flex-direction: column;
-    align-items: center;
-  }
-  .todos-quizzes > p {
-    width: 340px;
+    justify-content: flex-start;
+    padding: 0 30px;
   }
   .template-novo-quizz {
     width: 100vw;
@@ -553,7 +568,7 @@ a {
   }
   .quizzesPraJogar > li._quizz {
     height: 436px;
-    width: 360px;
+    width: 100%;
     gap: 10;
   }
   ._quizz > div {
@@ -565,7 +580,10 @@ a {
     word-break: break-all;
   }
   .quizzes {
-    width: 360px;
+    width: 100%;
+  }
+  .quizzes > li {
+    width: 100%;
   }
   ._quizzAlternativas {
     width: 340px;
@@ -613,13 +631,44 @@ a {
   ._pontuacao2 > img {
     width: 340px;
   }
-  ul.seus-quizzes-lista {
+  .seus-quizzes > ul {
     width: 100%;
   }
+  ul > .seus-quizzes-lista {
+    width: 100%;
+    row-gap: 14px;
+  }
   .seus-quizzes {
-    width: 340px;
+    width: 100%;
+    padding: 0 30px;
+  }
+  .seus-quizzes-titulo {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 14px;
   }
   .bannerTitulo {
     word-break: break-all;
+  }
+  .quizzes > li > .gradiente {
+    width: 100%;
+  }
+
+  .seus-quizzes-lista > li > .gradiente {
+    width: 100%;
+  }
+
+  .gradiente > div {
+    width: 85%;
+  }
+  li.imagelista {
+    width: 100%;
+    background-size: cover;
+    background-position: center;
+  }
+  .gradiente > p {
+    width: 95%;
+    word-wrap: normal;
   }
 }
