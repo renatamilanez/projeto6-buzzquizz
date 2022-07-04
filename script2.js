@@ -121,7 +121,7 @@ function validarPerguntasQuizz(){
     || urlQuizz1.includes('http') 
     || urlQuizz1.includes('.jpeg') 
     || urlQuizz1.includes('.png') 
-    || urlQuizz.includes('jpg'))
+    || urlQuizz1.includes('jpg'))
     && (url2.value !== "" 
     && urlQuizz2.includes('https') 
     || urlQuizz2.includes('http') 
@@ -148,6 +148,7 @@ function salvarPerguntasArray(){
         let resposta4 = document.getElementsByClassName(`resposta-pergunta-4 ${[i]}`)[0];
         let url4 = document.getElementsByClassName(`url-pergunta-4 ${[i]}`)[0];
         let tituloPergunta = document.getElementsByClassName(`texto-pergunta ${[i]}`)[0];
+        corPergunta = document.getElementsByClassName(`cor-pergunta ${[i]}`)[0];
 
         const infoApi = {
                 title: `${tituloPergunta.value}`,
