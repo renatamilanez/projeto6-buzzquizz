@@ -26,18 +26,18 @@ function renderizarInfoQuizz() {
   let telaQuizz = document.querySelector(".tela-quizz");
   telaQuizz.innerHTML = "";
   let renderizar = (telaQuizz.innerHTML += `
-  <div class="template-novo-quizz">
-      <h5>Comece pelo começo</h5>
-      <div class="main-container">
-      <div class="container-quizz">
-          <input class="titulo-novo-quizz" type="text" placeholder="Título do seu quizz" required minlength="20" maxlength="65">
-          <input class="url-novo-quizz" type="url" required placeholder="URL da imagem do seu quizz">
-          <input class="pergunta-novo-quizz" required type="number" placeholder="Quantidade de perguntas do seu quizz">
-          <input class="niveis-novo-quizz" type="number" required placeholder="Quantidade de níveis do seu quizz">
-      </div>
-      </div>
-      <button onclick="validarInfoQuizz();">Prosseguir para criar perguntas</button>
-  </div>`);
+    <div class="template-novo-quizz">
+        <h5>Comece pelo começo</h5>
+        <div class="main-container">
+        <div class="container-quizz">
+            <input class="titulo-novo-quizz" type="text" placeholder="Título do seu quizz" required minlength="20" maxlength="65">
+            <input class="url-novo-quizz" type="url" required placeholder="URL da imagem do seu quizz">
+            <input class="pergunta-novo-quizz" required type="number" placeholder="Quantidade de perguntas do seu quizz">
+            <input class="niveis-novo-quizz" type="number" required placeholder="Quantidade de níveis do seu quizz">
+        </div>
+        </div>
+        <button onclick="validarInfoQuizz();">Prosseguir para criar perguntas</button>
+    </div>`);
 
   return renderizar;
 }
@@ -77,52 +77,52 @@ function renderizarPerguntasQuizz() {
 
   for (let i = 1; i <= qtdadeQuizz.value; i++) {
     telaQuizz.innerHTML += `
-      <div class="container-quizz">
-      <div class="resposta correta">
-      <h6>Pergunta ${[i]}</h6>
-      <input class="texto-pergunta ${[
-        i,
-      ]}" type="text" placeholder="Texto da pergunta" required minlength="20">
-      <input class="cor-pergunta ${[
-        i,
-      ]}" type="color" required placeholder="Cor de fundo da pergunta ${[
+        <div class="container-quizz">
+        <div class="resposta correta">
+        <h6>Pergunta ${[i]}</h6>
+        <input class="texto-pergunta ${[
+          i,
+        ]}" type="text" placeholder="Texto da pergunta" required minlength="20">
+        <input class="cor-pergunta ${[
+          i,
+        ]}" type="color" required placeholder="Cor de fundo da pergunta ${[
       i,
     ]}" value="#f6b73c">
-      <h6>Resposta correta</h6>
-      <input class="resposta-pergunta-1 ${[
-        i,
-      ]}" required type="text" placeholder="Resposta correta">
-      <input class="url-pergunta-1 ${[
-        i,
-      ]}" type="url" required placeholder="URL da imagem">
-      </div>
-          <h6>Resposta incorretas</h6>
-          <div class="resposta incorreta">
-              <input class="resposta-pergunta-2 ${[
-                i,
-              ]}" required type="text" placeholder="Resposta incorreta 1">
-              <input class="url-pergunta-2 ${[
-                i,
-              ]}" type="url" required placeholder="URL da imagem 1">
-          </div>
-          <div class="resposta incorreta">
-              <input class="resposta-pergunta-3 ${[
-                i,
-              ]}" type="text" placeholder="Resposta incorreta 2">
-              <input class="url-pergunta-3 ${[
-                i,
-              ]}" type="url" placeholder="URL da imagem 2">
-          </div>
-          <div class="resposta incorreta">
-              <input class="resposta-pergunta-4 ${[
-                i,
-              ]}" type="text" placeholder="Resposta incorreta 3">
-              <input class="url-pergunta-4 ${[
-                i,
-              ]}" type="url" placeholder="URL da imagem 3">
-          </div>
-      </div>
-      </div>`;
+        <h6>Resposta correta</h6>
+        <input class="resposta-pergunta-1 ${[
+          i,
+        ]}" required type="text" placeholder="Resposta correta">
+        <input class="url-pergunta-1 ${[
+          i,
+        ]}" type="url" required placeholder="URL da imagem">
+        </div>
+            <h6>Resposta incorretas</h6>
+            <div class="resposta incorreta">
+                <input class="resposta-pergunta-2 ${[
+                  i,
+                ]}" required type="text" placeholder="Resposta incorreta 1">
+                <input class="url-pergunta-2 ${[
+                  i,
+                ]}" type="url" required placeholder="URL da imagem 1">
+            </div>
+            <div class="resposta incorreta">
+                <input class="resposta-pergunta-3 ${[
+                  i,
+                ]}" type="text" placeholder="Resposta incorreta 2">
+                <input class="url-pergunta-3 ${[
+                  i,
+                ]}" type="url" placeholder="URL da imagem 2">
+            </div>
+            <div class="resposta incorreta">
+                <input class="resposta-pergunta-4 ${[
+                  i,
+                ]}" type="text" placeholder="Resposta incorreta 3">
+                <input class="url-pergunta-4 ${[
+                  i,
+                ]}" type="url" placeholder="URL da imagem 3">
+            </div>
+        </div>
+        </div>`;
   }
 
   let botao = document.querySelector(".tela-quizz button");
@@ -155,7 +155,7 @@ function validarPerguntasQuizz() {
       urlQuizz1.includes("http") ||
       urlQuizz1.includes(".jpeg") ||
       urlQuizz1.includes(".png") ||
-      urlQuizz.includes("jpg")) &&
+      urlQuizz1.includes("jpg")) &&
     ((url2.value !== "" && urlQuizz2.includes("https")) ||
       urlQuizz2.includes("http") ||
       urlQuizz2.includes(".jpeg") ||
@@ -190,6 +190,7 @@ function salvarPerguntasArray() {
     let tituloPergunta = document.getElementsByClassName(
       `texto-pergunta ${[i]}`
     )[0];
+    corPergunta = document.getElementsByClassName(`cor-pergunta ${[i]}`)[0];
 
     const infoApi = {
       title: `${tituloPergunta.value}`,
@@ -219,32 +220,29 @@ function salvarPerguntasArray() {
     };
     quizz.questions.push(infoApi);
   }
-  console.log(quizz);
 }
 
 function renderizarNiveisQuizz() {
   let telaQuizz = document.querySelector(".main-container");
   telaQuizz.innerHTML = "";
 
-  console.log(niveisQuizz.value);
-
   for (let i = 1; i <= niveisQuizz.value; i++) {
     telaQuizz.innerHTML += `
-      <div class="container-quizz">
-      <div class="nivel-quizz">
-      <h6>Nível ${[i]}</h6>
-      <input class="titulo-nivel" type="text" placeholder="Título do nível ${[
-        i,
-      ]}" required minlength="10">
-      <input class="porcentagem-nivel" type="number" required min="0" max="100" placeholder="% de acerto mínima">
-      <input class="url-nivel" type="url" required placeholder="URL da imagem do nível ${[
-        i,
-      ]}">
-      <input class="descricao-nivel" required type="text" placeholder="Descrição do nível ${[
-        i,
-      ]}" minlength="30">
-      </div>
-      </div>`;
+        <div class="container-quizz">
+        <div class="nivel-quizz">
+        <h6>Nível ${[i]}</h6>
+        <input class="titulo-nivel" type="text" placeholder="Título do nível ${[
+          i,
+        ]}" required minlength="10">
+        <input class="porcentagem-nivel" type="number" required min="0" max="100" placeholder="% de acerto mínima">
+        <input class="url-nivel" type="url" required placeholder="URL da imagem do nível ${[
+          i,
+        ]}">
+        <input class="descricao-nivel" required type="text" placeholder="Descrição do nível ${[
+          i,
+        ]}" minlength="30">
+        </div>
+        </div>`;
   }
 
   let botao = document.querySelector(".tela-quizz button");
@@ -264,8 +262,6 @@ function validarNiveisQuizz() {
   let urlQuizz = urlNivel.value.toString();
   descricaoNivel = document.querySelector(".descricao-nivel");
   let caracDescricao = descricaoNivel.value.toString().length;
-
-  console.log(porcentagemNivel.value);
 
   if (
     tituloNivel !== "" &&
@@ -291,7 +287,6 @@ function validarNiveisQuizz() {
 function verificarNivelZero() {
   let valido = false;
   for (let i = 1; i <= niveisQuizz.value; i++) {
-    console.log(porcentagemNivel.value);
     if (porcentagemNivel.value == 0) {
       valido = true;
     }
@@ -310,34 +305,26 @@ async function salvarNiveisQuizz() {
     };
     quizz.levels.push(infoApi);
   }
-  console.log(quizz);
-  /*let promise = await axios.post('https://mock-api.driven.com.br/api/v7/buzzquizz/quizzes/', quizz)
-  promise.catch(erroAPI);
-  promise.then(enviarLocalStorage)*/
 
   try {
+    // debugger;
     let promise = await axios.post(
       "https://mock-api.driven.com.br/api/v7/buzzquizz/quizzes/",
       quizz
     );
     let id = promise.data.id;
+    let idExistente = localStorage.getItem("lista de ids");
+    idExistenteDese = JSON.parse(idExistente);
+    listaId.push(idExistenteDese);
     listaId.push(id);
     let listaIdString = JSON.stringify(listaId);
+    console.log(listaIdString);
     localStorage.setItem("lista de ids", listaIdString);
     renderizarSucessoQuizz();
   } catch (error) {
     erroAPI();
   }
 }
-//promise.data.id === localStorage.getItem('id')
-/*function enviarLocalStorage(){
-  let id = promise.data.id;
-  let listaId = [];
-  listaId.push(id);
-  listaIdString = JSON.stringify(listaId);
-  localStorage.setItem("lista de id", listaIdString);
-  renderizarSucessoQuizz();
-}*/
 
 function erroAPI() {
   console.log("não enviou");
@@ -347,16 +334,17 @@ function renderizarSucessoQuizz() {
   let telaQuizz = document.querySelector(".tela-quizz");
   telaQuizz.innerHTML = "";
   let renderizar = (telaQuizz.innerHTML += `
-  <div class="tela-sucesso-quizz"> 
-      <div class="template-novo-quizz">
-          <h5>Seu quizz está pronto!</h5>
-          <img src="">
-      
-          <button onclick="renderizarQuizz()">Acessar Quizz</button>
-          <a onclick="telaHome()">Voltar para home</a>
-      </div>
-  </div>
-  `);
+    <div class="tela-sucesso-quizz"> 
+        <div class="template-novo-quizz">
+            <h5>Seu quizz está pronto!</h5>
+
+            <img src="">
+        
+            <button onclick="renderizarQuizz()">Acessar Quizz</button>
+            <a onclick="telaHome()">Voltar para home</a>
+        </div>
+    </div>
+    `);
   return renderizar;
 }
 

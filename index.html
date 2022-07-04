@@ -14,13 +14,13 @@
     </header>
     <main>
       <div class="tela-inicial">
-        <div class="criar-quizz escondido">
+        <div class="criar-quizz">
           <div class="texto-botao">
             <p>Você não criou nenhum quizz ainda :(</p>
             <button onclick="renderizarInfoQuizz()">Criar Quizz</button>
           </div>
         </div>
-        <div class="seus-quizzes">
+        <div class="seus-quizzes escondido">
           <div class="seus-quizzes-titulo">
             <p>Seus Quizzes</p>
             <ion-icon
@@ -29,23 +29,7 @@
               onclick="renderizarInfoQuizz()"
             ></ion-icon>
           </div>
-          <ul class="seus-quizzes-lista">
-            <li class="imagelista">
-              <div class="gradiente">
-                <p>Título do quizz</p>
-              </div>
-            </li>
-            <li class="imagelista">
-              <div class="gradiente">
-                <p>Título do Quizz</p>
-              </div>
-            </li>
-            <li class="imagelista">
-              <div class="gradiente">
-                <p>Título do quizz</p>
-              </div>
-            </li>
-          </ul>
+          <ul class="seus-quizzes-lista"></ul>
         </div>
         <div class="todos-quizzes">
           <p>Todos os Quizzes</p>

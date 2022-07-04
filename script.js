@@ -7,10 +7,23 @@ const DOM = {
   RESPOSTAS: [],
   QUESTOES: 0,
   elemento: "",
+  quizzes_usuario: localStorage,
+  quizzes_id_usuario: "",
   renderizarQuizzes(quizz) {
     this.limparQuizzes();
+    renderizarQuizzesUsuario();
     quizz.forEach((quizz) => {
-      this.TODOS_QUIZZES_UL.innerHTML += `<li class='_${quizz.id}' onclick='telaJogarQuizz(this)'>
+      if (this.quizzes_id_usuario.includes(quizz.id)) {
+        let seus_quizzes = document.querySelector(".seus-quizzes-lista");
+        seus_quizzes.innerHTML += `<li class="_${quizz.id}" onclick='telaJogarQuizz(this)'>
+                                      <div class="gradiente">
+                                        <p>${quizz.title}</p>
+                                      </div>
+                                    </li>`;
+        let quizz_classe = document.querySelector(`li._${quizz.id}`);
+        quizz_classe.style.cssText = `background-image = url(${quizz.image})`;
+      } else {
+        this.TODOS_QUIZZES_UL.innerHTML += `<li class='_${quizz.id}' onclick='telaJogarQuizz(this)'>
                                             <div class='gradiente'>
                                               <div>
                                                 <p>
@@ -19,9 +32,10 @@ const DOM = {
                                               </div>
                                             </div>
                                           </li>`;
-      let quizz_classe = document.querySelector(`li._${quizz.id}`);
-      quizz_classe.style.cssText = `
+        let quizz_classe = document.querySelector(`li._${quizz.id}`);
+        quizz_classe.style.cssText = `
       background-image: url(${quizz.image});`;
+      }
     });
   },
   limparQuizzes() {
@@ -47,6 +61,7 @@ const telas = {
   TELA_INICIAL: document.querySelector(".tela-inicial"),
   TELA_CRIAR_QUIZZ: document.querySelector(".tela-quizz"),
   TELA_JOGAR_QUIZZ: document.querySelector(".tela-jogarQuizz"),
+  TELA_SEUS_QUIZZES: document.querySelector(".seus-quizzes"),
 };
 
 function telaHome() {
@@ -66,12 +81,25 @@ function telaJogarQuizz(elemento) {
   renderizarQuizz();
 }
 
+function renderizarQuizzesUsuario() {
+  if (DOM.quizzes_usuario.length > 0) {
+    const criar_quizz = document.querySelector(".criar-quizz");
+    const seus_quizzes = document.querySelector(".seus-quizzes");
+    criar_quizz.classList.add("escondido");
+    seus_quizzes.classList.remove("escondido");
+    let quizzes_id = DOM.quizzes_usuario["lista de ids"];
+    DOM.quizzes_id_usuario = quizzes_id;
+    console.log(DOM.quizzes_id_usuario);
+  }
+}
+
 function renderizarQuizz() {
   window.scrollTo(0, 0);
   document.querySelector(".quizzesPraJogar").innerHTML = "";
   DOM.QUESTOES = 0;
   DOM.RESPOSTAS = [];
   const id = DOM.elemento.className.slice(1);
+  console.log(id);
   const UL_QUIZZES_PRA_JOGAR = document.querySelector(".quizzesPraJogar");
   const UL_ALTERNATIVAS = document.querySelector("._quizzAlternativas");
   const bannerImage = document.querySelector(".bannerImage");

@@ -84,18 +84,17 @@ main {
   width: 1050px;
 }
 
-.imagelista {
+.seus-quizzes-lista > li {
   position: relative;
   width: 340px;
   height: 181px;
-  background-image: url("https://images7.memedroid.com/images/UPLOADED608/5d769bb5a0339.jpeg");
   background-size: 100%;
   border-radius: 5px;
   word-break: break-word;
   cursor: pointer;
 }
 
-.imagelista p {
+.seus-quizzes-lista > li p {
   bottom: 0;
   margin-left: 20px;
   margin-bottom: 20px;
@@ -672,7 +671,7 @@ a {
   .gradiente > div {
     width: 90%;
   }
-  li.imagelista {
+  .seus-quizzes-lista > li {
     width: 100%;
   }
   .gradiente > p {
