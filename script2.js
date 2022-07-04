@@ -178,14 +178,11 @@ function salvarPerguntasArray(){
         }
         quizz.questions.push(infoApi);
     }
-    console.log(quizz);
 }
 
 function renderizarNiveisQuizz(){
     let telaQuizz = document.querySelector('.main-container');
     telaQuizz.innerHTML = "";
-
-    console.log(niveisQuizz.value);
 
     for(let i=1; i <= (niveisQuizz.value); i++){
         telaQuizz.innerHTML +=`
@@ -219,8 +216,6 @@ function validarNiveisQuizz(){
     descricaoNivel = document.querySelector('.descricao-nivel');
     let caracDescricao = ((descricaoNivel.value).toString()).length;
 
-    console.log(porcentagemNivel.value);
-
     if ((tituloNivel !== "" 
     && caracTitulo >=10) 
     && (porcentagemNivel.value !== "" 
@@ -244,7 +239,6 @@ function validarNiveisQuizz(){
 function verificarNivelZero(){
     let valido = false;
     for(let i=1; i <= (niveisQuizz.value); i++){
-        console.log(porcentagemNivel.value)
         if(porcentagemNivel.value == 0){
             valido = true;
         }
@@ -263,15 +257,14 @@ async function salvarNiveisQuizz(){
                     };
         quizz.levels.push(infoApi);
     }
-    console.log(quizz);
-    /*let promise = await axios.post('https://mock-api.driven.com.br/api/v7/buzzquizz/quizzes/', quizz)
-    promise.catch(erroAPI);
-    promise.then(enviarLocalStorage)*/
-
 
     try {
+        debugger
         let promise = await axios.post('https://mock-api.driven.com.br/api/v7/buzzquizz/quizzes/', quizz)
         let id = promise.data.id;
+        let idExistente = localStorage.getItem("lista de ids");
+        idExistenteDese = JSON.parse(idExistente);
+        listaId.push(idExistenteDese);
         listaId.push(id);
         let listaIdString = JSON.stringify(listaId);
         localStorage.setItem("lista de ids", listaIdString);
@@ -280,15 +273,6 @@ async function salvarNiveisQuizz(){
         erroAPI();
     }
 }
-//promise.data.id === localStorage.getItem('id')
-/*function enviarLocalStorage(){
-    let id = promise.data.id;
-    let listaId = [];
-    listaId.push(id);
-    listaIdString = JSON.stringify(listaId);
-    localStorage.setItem("lista de id", listaIdString);
-    renderizarSucessoQuizz();
-}*/
 
 function erroAPI(){
     console.log('não enviou')
