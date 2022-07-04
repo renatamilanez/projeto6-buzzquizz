@@ -1,63 +1,66 @@
 <!DOCTYPE html>
 <html lang="pt-br">
   <head>
-      <meta charset="UTF-8"/>
-      <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-      <title>BuzzQuizz</title>
-      <link rel="stylesheet" href="reset.css" class="css" />
-      <link rel="stylesheet" href="styles.css" class="css" />
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>BuzzQuizz</title>
+    <link rel="stylesheet" href="reset.css" class="css" />
+    <link rel="stylesheet" href="styles.css" class="css" />
   </head>
   <body>
     <header>
-        <h2 onclick="telaHome()">BuzzQuizz</h2>
+      <h2 onclick="telaHome()">BuzzQuizz</h2>
     </header>
     <main>
       <div class="tela-inicial">
         <div class="criar-quizz escondido">
-            <div class="texto-botao">
-                <p>Você não criou nenhum quizz ainda :(</p>
-                <button onclick="renderizarInfoQuizz()">Criar Quizz</button>
-            </div>
+          <div class="texto-botao">
+            <p>Você não criou nenhum quizz ainda :(</p>
+            <button onclick="renderizarInfoQuizz()">Criar Quizz</button>
+          </div>
         </div>
         <div class="seus-quizzes">
           <div class="seus-quizzes-titulo">
             <p>Seus Quizzes</p>
-            <ion-icon name="add-circle" class="add-quizz" onclick="renderizarInfoQuizz()"></ion-icon>
+            <ion-icon
+              name="add-circle"
+              class="add-quizz"
+              onclick="renderizarInfoQuizz()"
+            ></ion-icon>
           </div>
           <ul class="seus-quizzes-lista">
             <li class="imagelista">
               <div class="gradiente">
-                  <p>Título do quizz</p>
+                <p>Título do quizz</p>
               </div>
             </li>
             <li class="imagelista">
               <div class="gradiente">
-                  <p>Título do Quizz</p>
+                <p>Título do Quizz</p>
               </div>
             </li>
             <li class="imagelista">
               <div class="gradiente">
-                  <p>Título do quizz</p>
+                <p>Título do quizz</p>
               </div>
             </li>
           </ul>
         </div>
         <div class="todos-quizzes">
-            <p>Todos os Quizzes</p>
-            <ul class="quizzes"></ul>
+          <p>Todos os Quizzes</p>
+          <ul class="quizzes"></ul>
         </div>
       </div>
 
-      <div class="tela-quizz">
-      </div>
+      <div class="tela-quizz"></div>
 
       <div class="tela-jogarQuizz escondido">
         <div class="banner">
           <p class="bannerTitulo">O quão Potterhead é você?</p>
           <img
-              class="bannerImage"
-              src="https://falauniversidades.com.br/mrf4u/statics/i/ps/cdn.falauniversidades.com.br/wp-content/uploads/2020/09/02180235/Imersao-harry-potter.jpg"
+            class="bannerImage"
+            src="https://falauniversidades.com.br/mrf4u/statics/i/ps/cdn.falauniversidades.com.br/wp-content/uploads/2020/09/02180235/Imersao-harry-potter.jpg"
           />
         </div>
         <ul class="quizzesPraJogar"></ul>
